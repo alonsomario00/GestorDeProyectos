@@ -1,0 +1,109 @@
+{{>nav}}
+{{!--Imagenes con explicacion en un carrousel--}}
+
+<div class="bg-info" style="margin-top: 60px">
+	<div class="bd-example">
+		<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+				<li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+			</ol>
+			{{!--Primera imagen del carrousel--}}
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<div class="container">
+						<div class="jumbotron bg-info text-light">
+							<h1 class="display-4" style="text-align: right; ">¡Gestor de Proyectos!</h1>
+							<p class="lead" style="text-align: right; ">Gestiona tus proyectos de una manera eficiente y
+								sencilla.</p>
+							<p style="text-align: right; ">Su interfaz hará que tus proyectos se organizen
+								satisfactoriamente</p>
+							<p class="lead" style="text-align: right;">
+								<a class="btn btn-primary btn-lg" href="#" role="button">Lee más</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				{{!--Segunda imagen del carrousel--}}
+				<div class="carousel-item">
+					<div class="container">
+						<div class="jumbotron bg-info text-light">
+							<h1 class="display-4" style="text-align: center; ">Segundo, world!</h1>
+							<p class="lead" style="text-align: center; ">This is a simple hero unit, a simple
+								jumbotron-style component for calling extra attention to featured content or
+								information.</p>
+							<p style="text-align: center; ">It uses utility classes for typography and spacing to space
+								content out within the larger container.</p>
+							<p class="lead" style="text-align: center; ">
+								<a class="btn btn-primary btn-lg" href="#" role="button">Lee más</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				{{!--Tercera imagen del carrousel--}}
+				<div class="carousel-item">
+					<div class="container">
+						<div class="jumbotron bg-info text-light">
+							<h1 class="display-4" style="text-align: left; ">Tercero, world!</h1>
+							<p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling
+								extra attention to featured content or information.</p>
+							<p style="text-align: left; ">It uses utility classes for typography and spacing to space
+								content out within the larger container.</p>
+							<p class="lead" style="text-align: left; ">
+								<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			{{!--Siguiente carrousel --}}
+			<a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previo</span>
+			</a>
+			<a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Siguiente</span>
+			</a>
+		</div>
+	</div>
+</div>
+
+
+{{!--Imagenes con explicacion en un carrousel--}}
+<div class="container py-5 bg-light">
+	<div class="row">
+		<div class="col mb-4">
+			<div class="border-0" style="width: 18rem;">
+				<img src="images/proyecto.png" class="card-img-top" alt="..."
+					style="width: 150px; height: 150px; margin-left: 70px">
+				<div class="card-body">
+					<h5 class="card-title" style="text-align: center;">Proyectos organizados</h5>
+					<p class="card-text" style="text-align: center;">Explicacion</p>
+				</div>
+			</div>
+		</div>
+		<div class="col mb-4">
+			<div class="boder-0" style="width: 18rem;">
+				<img src="images/tareas.jpg" class="card-img-top" alt="..."
+					style="width: 150px; height: 150px; margin-left: 70px">
+				<div class="card-body">
+					<h5 class="card-title" style="text-align: center;">Tareas </h5>
+					<p class="card-text" style="text-align: center;">Explicacion</p>
+				</div>
+			</div>
+		</div>
+		<div class="col mb-4">
+			<div class="border-0" style="width: 18rem;">
+				<img src="images/fichado.png" class="card-img-top" alt="..."
+					style="width: 150px; height: 150px; margin-left: 70px">
+				<div class="card-body">
+					<h5 class="card-title" style="text-align: center;">Control de horarios</h5>
+					<p class="card-text" style="text-align: center;">Explicacion</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{>footer}}

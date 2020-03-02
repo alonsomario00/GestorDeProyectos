@@ -1,0 +1,60 @@
+<script>
+	$(document).ready(function(e){
+		calendar = new CalendarYvv("#calendar", moment().format("Y-M-D"), "Monday");
+		calendar.funcPer = function(ev){
+			console.log(ev)
+		};
+		//Para Marcar dias en el calendario
+		calendar.diasResal = []
+
+		calendar.createCalendar();
+	});
+</script>
+
+{{>nav}}
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="card border2">
+		<div class="card-header bg-info font-weight-bold text-center" style="font-size: 15pt">
+			Proyectos Activos
+		</div>
+		<div class="card-body text-center">
+			<h5 class="card-title">Special title treatment</h5>
+			<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+			<a href="/ver-proyectos" class="btn btn-primary">Ver</a>
+		</div>
+	</div>
+    </div>
+    <div class="col-6">
+      <div class="card border2">
+		<div class="card-header bg-info font-weight-bold text-center" style="font-size: 15pt">
+			Tareas
+		</div>
+		<div class="card-body text-center">
+			<h5 class="card-title">Special title treatment</h5>
+			<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+			<a href="/ver-tareas" class="btn btn-primary">Ver</a>
+		</div>
+	</div>
+    </div>
+  </div>
+</div>
+
+<div class="card border2 text-center" style="margin-top: 5%; margin-left: 5%; margin-right: 5%">
+		<div class="card-header bg-info font-weight-bold" style="font-size: 15pt">
+			CALENDARIO
+		</div>
+		<div class="card-body">
+			<div class="col-6">
+				<h2 class="mb-4" style="text-align: center;">Calendario</h2>
+				<div class="card">
+					<div class="card-body p-0">
+						<div id="calendar"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+{{>footer}}
+{{>chat}}

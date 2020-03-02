@@ -1,0 +1,56 @@
+{{>nav}}
+<div class="container border2">
+	<div class="card-header bg-info font-weight-bold">
+		Crear Usuario
+	</div>
+	<div class="form-group row" style="padding-top: 15px; text-align: center;">
+		<div class="col-6">
+			<label for="full_name_id" class="control-label">Nombre</label>
+			<input type="text" class="form-control text-center" id="full_name_id" name="name" placeholder="Nombre">
+		</div>
+		<div class="col-3">
+			<label for="full_name_id" class="control-label">1º Apellido</label>
+			<input type="text" class="form-control text-center" id="full_name_id" name="name" placeholder="Nombre">
+		</div>
+		<div class="col-3">
+			<label for="full_name_id" class="control-label">2º Apellido</label>
+			<input type="text" class="form-control text-center" id="full_name_id" name="name" placeholder="Nombre">
+		</div>
+	</div>
+
+	<div class="form-group row" style="text-align: center;">
+		<div class="col">
+			<label for="full_name_id" class="control-label">Fecha Nacimiento</label>
+			<input type="date" class="form-control text-center" id="date1" name="date1" placeholder="Fecha Nacimiento">
+		</div>
+		<div class="col">
+			<label for="full_name_id" class="control-label">Puesto</label>
+			<input type="text" class="form-control text-center" id="text" name="text" placeholder="Puesto">
+		</div>
+			<div class="col">
+			<label for="full_name_id" class="control-label">Telefono</label>
+			<input type="text" class="form-control text-center" id="text" name="text" placeholder="Puesto">
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-6 mx-auto text-center">
+			<label for="full_name_id" class="control-label">Correo Electronico</label>
+			<input type="text" class="form-control text-center" id="text" name="text" placeholder="Correo Electronico">
+		</div>
+	</div>
+
+	<div class="form-group row" style="text-align: center">
+			<div class="col-12">
+				<label for="full_name_id" class="control-label">Descripción</label>
+				<textarea class="form-control text-center" id="full_name_id" name="descripcion" placeholder="Descripción"></textarea>
+			</div>
+		</div>
+
+{{!-- Botones --}}
+	<div class="text-right" style="padding-bottom: 20px; margin-top: 50px;">
+		<button type="button" class="btn btn-primary">Crear</button>
+		<a href="/cancelar-crear-usuario" class="btn btn-danger">Cancelar</a>
+    </div>  
+</div> 
+{{>footer}}
+{{>chat}}

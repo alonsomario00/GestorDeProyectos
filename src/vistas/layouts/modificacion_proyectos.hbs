@@ -1,0 +1,44 @@
+{{>nav}}
+<div class="container border2">
+	<div class="card-header bg-info font-weight-bold">
+		Modificación de proyecto
+	</div>
+	<div class="form-group row" style="padding-top: 15px; text-align: center;">
+		<div class="col-3"></div>
+		<div class="col-6">
+			<label for="full_name_id" class="control-label">Nombre</label>
+			<input type="text" class="form-control text-center" id="full_name_id" name="name" placeholder="Nombre">
+		</div>
+		<div class="col-3"></div>
+	</div>
+
+
+	<div class="form-group row" style="padding-top: 15px; margin: 15px 10px">
+		<div class="col-12 text-center">
+			<label for="full_name_id" class="control-label">Descripción</label>
+			<textarea class="form-control text-center" id="full_name_id" name="descripcion" placeholder="Descripción"></textarea>
+		</div>
+	</div>
+
+	<div class="form-group row" style="margin: 15px 10px">
+		<div class="col">
+			<label for="full_name_id" class="control-label">Fecha Inicio</label>
+			<input type="date" class="form-control" id="date1" name="date1" placeholder="">
+		</div>
+		<div class="col">
+			<label for="full_name_id" class="control-label">Fecha Fin</label>
+			<input type="date" class="form-control" id="date2" name="date2" placeholder="">
+		</div>
+		<div class="col">
+			<label for="full_name_id" class="control-label">Fecha Relativa</label>
+			<input type="date" class="form-control" id="date3" name="date3" placeholder="">
+		</div>
+	</div>
+<!-- Botones -->
+	<div class="text-right" style="padding-bottom: 20px; margin-top: 50px;">
+		<button type="button" class="btn btn-primary">Aceptar</button>
+		<a href="/cancelar-modificacion-proyecto" class="btn btn-danger">Cancelar</a>
+    </div>  
+</div> 
+{{>footer}}
+{{>chat}}

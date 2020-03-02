@@ -1,0 +1,136 @@
+{{>nav}}
+<div class="container border2">
+	<div class="row">
+		<div class="container">
+			<div class="card-header bg-info font-weight-bold">Listado de Proyectos</div>
+			<input class="form-control" id="myInput" type="text" placeholder="Buscar...">
+			<br>
+			<table class="table table-bordered table-striped table-responsive">
+				<thead>
+					<tr>
+						<th>Nombre Proyecto</th>
+						<th>Descripción</th>
+						<th>Tareas</th>
+						<th>Fecha Inicio</th>
+						<th>Fecha Fin</th>
+						<th>Selección</th>
+					</tr>
+				</thead>
+				<tbody id="myTable">
+					<tr>
+						<td>Programar pagina</td>
+						<td>Hacer una página bonita</td>
+						<td>
+							<select name="OS">
+								<option value="1">Windows Vista</option> 
+								<option value="2">Windows 7</option> 
+								<option value="3">Windows XP</option>
+								<option value="10">Fedora</option> 
+								<option value="11">Debian</option> 
+								<option value="12">Suse</option> 
+							</select>
+						</td>
+						<td>19/01/1859</td>
+						<td>20/01/2000</td>
+						<td class="text-center">
+							<input type="checkbox">
+						</td>
+					</tr>
+					<tr>
+						<td>Pagina web JPM</td>
+						<td>Hacer una página bonita</td>						
+						<td>
+							<select name="OS">
+								<option value="1">Windows Vista</option> 
+								<option value="2">Windows 7</option> 
+								<option value="3">Windows XP</option>
+								<option value="10">Fedora</option> 
+								<option value="11">Debian</option> 
+								<option value="12">Suse</option> 
+							</select>
+						</td>
+						<td>19/06/2020</td>
+						<td>20/01/2000</td>
+						<td class="text-center">
+							<input type="checkbox">
+						</td>
+					</tr>
+					<tr>
+						<td>Programar pagina</td>
+						<td>Hacer una página bonita</td>
+						<td>
+							<select name="OS">
+								<option value="1">Windows Vista</option> 
+								<option value="2">Windows 7</option> 
+								<option value="3">Windows XP</option>
+								<option value="10">Fedora</option> 
+								<option value="11">Debian</option> 
+								<option value="12">Suse</option> 
+							</select>
+						</td>
+						<td>19/01/2020</td>
+						<td>20/01/2000</td>
+						<td class="text-center">
+							<input type="checkbox">
+						</td>
+					</tr>
+					<tr>
+						<td>Instalar controladores</td>
+						<td>Hacer una página bonita</td>
+						<td>
+							<select name="OS">
+								<option value="1">Windows Vista</option> 
+								<option value="2">Windows 7</option> 
+								<option value="3">Windows XP</option>
+								<option value="10">Fedora</option> 
+								<option value="11">Debian</option> 
+								<option value="12">Suse</option> 
+							</select>
+						</td>
+						<td>19/01/2020</td>
+						<td>20/01/2000</td>
+						<td class="text-center">
+							<input type="checkbox">
+						</td>
+					</tr>
+					<tr>
+						<td>Instalar controladores de dominio</td>
+						<td>kljañfdklsj</td>
+						<td>
+							<select name="OS">
+								<option value="1">Windows Vista</option> 
+								<option value="2">Windows 7</option> 
+								<option value="3">Windows XP</option>
+								<option value="10">Fedora</option> 
+								<option value="11">Debian</option> 
+								<option value="12">Suse</option> 
+							</select>
+						</td>
+						<td>19/01/2020</td>
+						<td>20/01/2000</td>
+						<td class="text-center">
+							<input type="checkbox">
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+
+		</div>
+
+		<!--  Botones Aceptar -->
+		<div class="col-6">
+		</div>
+
+		<div class="card-body">
+			<div>
+				<a href="/modificar-proyectos" class="btn btn-primary" style="float: right; margin-left: 17px">Modificar</a>
+			</div>
+			<div>
+				<a href="/inicio" class="btn btn-primary" style="float: right;">Aceptar</a>
+			</div>
+		</div>
+	</div>
+</div>
+{{>footer}}
+{{>chat}}
