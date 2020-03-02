@@ -1,0 +1,217 @@
+<div class="container p-4 borderweb">
+  <div class="row">
+    <div class="col mx-auto">
+      <div class="card text-center">
+        <div class="card-header bg-info font-weight-bold">
+          <h2>Crear Usuario</h2>
+        </div>
+        <div class="card-body">
+          <form action="/createUser" method="POST">
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <h6>Nombre</h6>
+                  <input type="text" name="firstname" placeholder="Nombre" class="form-control" autofocus>
+                </div>
+                <div class="form-group">
+                  <h6>1<sup>er</sup> Apellido</h6>
+                  <input type="text" name="lastname" placeholder="1º Apellido" class="form-control">
+                </div>
+                <div class="form-group">
+                  <h6>2º Apellido</h6>
+                  <input type="text" name="surname" placeholder="2º Apellido" class="form-control">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <h6>Correo electrónico</h6>
+                  <input type="email" name="username" placeholder="Correo electrónico" class="form-control">
+                </div>
+                <div class="form-group">
+                  <h6>Contraseña</h6>
+                  <input type="password" name="password" placeholder="Contraseña" class="form-control">
+                </div>
+                <div class="form-group">
+                  <h6>Repetir contraseña</h6>
+                  <input type="password" name="repeatpassword" placeholder="Contraseña" class="form-control">
+                </div>
+              </div>
+              <div class="col-4">
+                <h6>Foto de perfil</h6>
+                <div class="borderphoto">
+                  <img class="img-thumbnail" src="/static/img/usuario.png">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <h6>Fecha de nacimiento</h6>
+                  <input type="date" name="born" placeholder="Fecha de Nacimiento" class="form-control">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <h6>Teléfono</h6>
+                  <input type="text" name="phone" placeholder="Teléfono" class="form-control">
+                </div>
+              </div>
+              <div class="col-4">
+                  <h6>Puesto</h6>
+                   <select type="text" name="job" placeholder="Puesto" class="form-control">
+                      <option value="1">Administrador</option>
+                      <option value="2">Jefe de Proyecto</option>
+                      <option value="3">Programador senior</option>
+                      <option value="4">Programador junior</option>
+                    </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <h6>Dirección</h6>
+                  <input type="text" name="adress" placeholder="Dirección" class="form-control">
+                </div>
+              </div>
+              <div class="col 3">
+                <div class="form-group">
+                  <h6>Ciudad</h6>
+                  <input type="text" name="city" placeholder="Ciudad" class="form-control">
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <h6>CP</h6>
+                  <input type="text" name="postcode" placeholder="CP" class="form-control">
+                </div>
+              </div>
+              <div class="col-3">  
+                <a>Provincia</a>
+                <select type="text" name="province" placeholder="Provincia" class="form-control">
+                  <option selected> --- </option>
+                  <option value="ES-C">A Coruña</option>
+                  <option value="ES-VI">Araba/Álava</option>
+                  <option value="ES-AB">Albacete</option>
+                  <option value="ES-A">Alicante/Alacant</option>
+                  <option value="ES-AL">Almería</option>
+                  <option value="ES-O">Asturias</option>
+                  <option value="ES-AV">Ávila</option>
+                  <option value="ES-BA">Badajoz</option>
+                  <option value="ES-PM">Balears</option>
+                  <option value="ES-B">Barcelona</option>
+                  <option value="ES-BI">Bizkaia</option>
+                  <option value="ES-BU">Burgos</option>
+                  <option value="ES-CC">Cáceres</option>
+                  <option value="ES-CA">Cádiz</option>
+                  <option value="ES-S">Cantabria</option>
+                  <option value="ES-CS">Castellón/Castelló</option>
+                  <option value="ES-CR">Ciudad Real</option>
+                  <option value="ES-CO">Córdoba</option>
+                  <option value="ES-CU">Cuenca</option>
+                  <option value="ES-SS">Gipuzkoa</option>
+                  <option value="ES-GI">Girona</option>
+                  <option value="ES-GR">Granada</option>
+                  <option value="ES-GU">Guadalajara</option>
+                  <option value="ES-H">Huelva</option>
+                  <option value="ES-HU">Huesca</option>
+                  <option value="ES-J">Jaén</option>
+                  <option value="ES-LO">La Rioja</option>
+                  <option value="ES-GC">Las Palmas</option>
+                  <option value="ES-LE">León</option>
+                  <option value="ES-L">Lleida</option>
+                  <option value="ES-LU">Lugo</option>
+                  <option value="ES-M">Madrid</option>
+                  <option value="ES-MA">Málaga</option>
+                  <option value="ES-MU">Murcia</option>
+                  <option value="ES-NA">Navarra/Nafarro</option>
+                  <option value="ES-OR">Ourense</option>
+                  <option value="ES-P">Palencia</option>
+                  <option value="ES-PO">Pontevedra</option>
+                  <option value="ES-SA">Salamanca</option>
+                  <option value="ES-TF">Santa Cruz de Tenerife</option>
+                  <option value="ES-SG">Segovia</option>
+                  <option value="ES-SE">Sevilla</option>
+                  <option value="ES-SO">Soria</option>
+                  <option value="ES-T">Tarragona</option>
+                  <option value="ES-TE">Teruel</option>
+                  <option value="ES-TO">Toledo</option>
+                  <option value="ES-V">Valencia/València</option>
+                  <option value="ES-VA">Valladolid</option>
+                  <option value="ES-ZA">Zamora</option>
+                  <option value="ES-Z">Zaragoza</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <h6>Descripción</h6>
+                  <textarea type="text" name="description" placeholder="Descripción" class="form-control text-center"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col">
+                <div class="form-group">
+                  <button class="btn btn-primary" style="width: 50%;">
+                    Crear usuario
+                  </button>
+                </div>
+              </div>
+            </div>
+          
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{{!-- <script>
+  function comprobarClave() {
+    clave1 = document.f1.password.value
+    clave2 = document.f1.repeatpassword.value
+
+    if (password == repeatpassword)
+      alert("Las dos claves son iguales...\nRealizaríamos las acciones del caso positivo")
+    else
+      alert("Las dos claves son distintas...\nRealizaríamos las acciones del caso negativo")
+  }
+</script> --}}
+
+
+
+<script type="text/javascript">
+	/*funcion */
+	$("#customSwitch1").click(function () {
+		if ($("#customSwitch1").prop('checked')) {
+			$("#state_id1").prop('disabled', false);
+		} else {
+			$("#state_id1").prop('disabled', true);
+		}
+	})
+
+	$("#customSwitch2").click(function () {
+		if ($("#customSwitch2").prop('checked')) {
+			$("#state_id2").prop('disabled', false);
+		} else {
+			$("#state_id2").prop('disabled', true);
+		}
+	})
+
+	$("#customSwitch3").click(function () {
+		if ($("#customSwitch3").prop('checked')) {
+			$("#state_id3").prop('disabled', false);
+		} else {
+			$("#state_id3").prop('disabled', true);
+		}
+	})
+
+	/*funcion calendario*/
+	$("#date1").on("change", function () {
+		$("#date2").prop("min", $("#date1").val());
+		$("#date3").prop("min", $("#date1").val());
+	})
+
+</script>

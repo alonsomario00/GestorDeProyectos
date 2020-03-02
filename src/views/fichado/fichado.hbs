@@ -1,0 +1,95 @@
+<style type="text/css">
+    .cronobox {
+        margin: auto;
+        padding: 0;
+        align-items: center;
+    }
+
+
+    #reloj {
+        font: bold 50px digital, europa, arial;
+        text-align: center;
+    }
+
+    #cronometro [type=button] {}
+</style>
+<script type="text/javascript">
+    window.onload = function () {
+        visor = document.getElementById("reloj"); //localizar pantalla del reloj
+        //asociar eventos a botones: al pulsar el botón se activa su función.
+        document.cron.empieza.onclick = empezar;
+        document.cron.para.onclick = parar;
+        document.cron.continua.onclick = continuar;
+        document.cron.reinicia.onclick = reiniciar;
+    }
+    //variables de inicio:
+    var marcha = 0; //control del temporizador
+    var cro = 0; //estado inicial del cronómetro.
+    //cronometro en marcha. Empezar en 0:
+    function empezar() {
+        if (marcha == 0) { //solo si el cronómetro esta parado
+            emp = new Date() //fecha actual
+            elcrono = setInterval(tiempo, 10); //función del temporizador.
+            marcha = 1 //indicamos que se ha puesto en marcha.
+        }
+    }
+    function tiempo() { //función del temporizador
+        actual = new Date() //fecha en el instante
+        cro = actual - emp //tiempo transcurrido en milisegundos
+        cr = new Date() //fecha donde guardamos el tiempo transcurrido
+        cr.setTime(cro)
+        sg = cr.getSeconds(); //segundos del cronómetro
+        mn = cr.getMinutes(); //minutos del cronómetro
+        ho = cr.getHours() - 1; //horas del cronómetro
+        if (sg < 10) { sg = "0" + sg; }
+        if (mn < 10) { mn = "0" + mn; }
+        if (ho < 10) { ho = "0" + ho; }
+        visor.innerHTML = ho + " : " + mn + " : " + sg; //pasar a pantalla.
+    }
+    //parar el cronómetro
+    function parar() {
+        if (marcha == 1) { //sólo si está en funcionamiento
+            clearInterval(elcrono); //parar el crono
+            marcha = 0; //indicar que está parado.
+        }
+    }
+    //Continuar una cuenta empezada y parada.
+    function continuar() {
+        if (marcha == 0) { //sólo si el crono está parado
+            emp2 = new Date(); //fecha actual
+            emp2 = emp2.getTime(); //pasar a tiempo Unix
+            emp3 = emp2 - cro; //restar tiempo anterior
+            emp = new Date(); //nueva fecha inicial para pasar al temporizador 
+            emp.setTime(emp3); //datos para nueva fecha inicial.
+            elcrono = setInterval(tiempo, 10); //activar temporizador
+            marcha = 1;
+        }
+    }
+    //Volver al estado inicial
+    function reiniciar() {
+        if (marcha == 1) { //si el cronómetro está en marcha:
+            clearInterval(elcrono); //parar el crono
+            marcha = 0;	//indicar que está parado
+        }
+        cro = 0; //tiempo transcurrido a cero
+        visor.innerHTML = "00 : 00 : 00"; //visor a cero
+    }	
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div id="cronometro">
+                <div id="reloj" class="bordercrono" style="margin-top: 50px;">00 : 00 : 00</div>
+                <form name="cron" action="#">
+                    <button type="button" name="entrada" class="fichaje  btn-success btn-block mb-3">
+                        <a href="/fichado/fichajeEntrada" style="font-weight: bold; color:black">Entrada</a>
+                    </button>
+                    <button type="button" name="salida" class="fichaje btn btn-danger btn-block mb-3">
+                        <a href="/fichado/fichajeSalida" style="font-weight: bold; color:black">Salida</a>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

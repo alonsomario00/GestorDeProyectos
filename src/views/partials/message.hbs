@@ -1,0 +1,31 @@
+<script>
+    window.setTimeout(function () {
+        $(".alert").fadeTo(500, 0).slideUp(500, function () {
+            $(this).remove();
+        });
+    }, 2000);
+</script>
+
+{{#if message}}
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="alert alert-danger" role="alert">
+                {{message}}
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
+
+{{#if success}}
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="alert alert-success" role="alert">
+                {{success}}
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}

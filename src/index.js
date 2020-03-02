@@ -1,91 +1,91 @@
 /*
-		Cargamos/instanciamos los módulos que se necesitan
- */
+    Se cargan los módulos necesarios como objetos de instancias con el mismo nombre
+*/
+
 const express = require('express');
-//	morgan muestra en consola las peticiones que llegan al servidor. Se usa sólo en desarrollo
 const morgan = require('morgan');
-const path = require('path');//	Handlebar es el sistema para manejo de platillas
+const path = require('path');
 const exphbs = require('express-handlebars');
+const session = require('express-session');
+const validator = require('express-validator');
+const passport = require('passport');
+const flash = require('connect-flash');
+const MySQLStore = require('express-mysql-session')(session);
 const bodyParser = require('body-parser');
-const flash = require('connect-flash');  //  para los mensajes en pantalla
-const session = require('express-session'); // para manejar sesiones
-const MySQLStore = require('express-mysql-session')(session); // para guardar la sesión en la BD
-//  este mód. se importa aquí para poder ejecutar su cód., pero se utiliza (y se importa de nuevo)
-//  en 'lib/passpor.js'
-const passport = require('passport'); //  para autentificar a los usuarios
 
-//	Lo necesita la sesión para almacenarla en la BD
-const {database} = require('./keys');
+const { database } = require('./keys')
 
-// Intializaciones
-const app = express();		// app es el objeto que representa nuestra aplicación
-require('./lib/passport');  // contiene la config. del proceso de autentificación de usaurios
-
+const fileUpload = require('express-fileupload');
 
 /*
-		SETTINGS
- */ 
-app.set('port', process.env.PORT || 3000);	// puerto en el que escuchará el servidor nodejs
-//	fijo el path de la carpeta views
-app.set('views', path.join(__dirname, 'vistas'));
-//	configuro handlebars
-//	'.hbs' --> nombre del motor
-//	resto --> configuración de la instancia de HB (exphbs)
+    INICIALIZACIONES
+*/
+
+const app = express();
+require('./lib/passport');
+
+/*
+    PARAMETRIZACIÓN
+*/
+app.set('port', process.env.PORT || 3000);
+app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', exphbs({
   defaultLayout: 'main',
   layoutsDir: path.join(app.get('views'), 'layouts'),
   partialsDir: path.join(app.get('views'), 'partials'),
   extname: '.hbs',
   helpers: require('./lib/handlebars')
-}));
-//	asigno el nombre '.hbs' al motor de vistas
-//	(configurado en la sentencia anterior)
+}))
 app.set('view engine', '.hbs');
 
 /*
-		MIDDLEWARES
- */
+    MIDDLEWARES
+*/
+app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 app.use(session({
-  secret: 'CPL-CursoWebLeon-2019',
-  resave: false, // para que no se renueve
-  saveUninitialized: false, // para que no se guarde sin inicializar
-  //	Si guardamos en la BD, necesitamos el mód. express-mysql-session.
-  store: new MySQLStore(database) // para guardarla en la BD
+  secret: 'faztmysqlnodemysql',
+  resave: false,
+  saveUninitialized: false,
+  store: new MySQLStore(database)
 }));
 app.use(flash());
-app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({extended: false}));
-//  Según la docum. en http://www.passportjs.org/docs/configure/
-//  es necesario inicializar passport
-app.use(passport.initialize()); // se incializa, pero aquí no sabe dónde guardar los datos
-app.use(passport.session());  //  indicamos que utilizará los datos en una sesión
-
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(validator());
 
 /*
-		VARIABLES GLOBALES
- */ 
+    VARIABLES GLOBALES
+*/
 app.use((req, res, next) => {
-	//	Este mensaje se creó en la ruta '/links/nuevo'.
-	//	Desde aquí lo ponemos en una variable global 'success' 
-	//	(app.locals.nombre-de-variable) para que este disponible
-	//	para todos los módulos
-	app.locals.success = req.flash('success');
   app.locals.message = req.flash('message');
+  app.locals.success = req.flash('success');
   app.locals.user = req.user;
-  
-  	next();
+  next();
 });
 
-// Rutas
-app.use(require('./rutas/index'));	// rutas de primer nivel
-app.use(require('./rutas/usuarios')); // rutas de operaciones con los links de usuarios
+/*
+    RUTAS
+*/
+app.use(require('./routes/index'));
+app.use(require('./routes/authentication'));
+app.use('/inicio', require('./routes/postLogin'));
+app.use('/proyectos', require('./routes/proyectos'));
+app.use('/tareas', require('./routes/tareas'));
+app.use('/repositorio', require('./routes/repositorio'));
+app.use('/fichado', require('./routes/fichado'));
+app.use('/perfil', require('./routes/perfil'));
 
+/*
+    PÚBLICO
+*/
+app.use('/static', express.static(path.join(__dirname + '/public')));
 
-// Public
-app.use(express.static(path.join(__dirname, 'public')));
-
-
-// Starting
+/*
+    ARRANQUE SERVIDOR
+*/
 app.listen(app.get('port'), () => {
-  console.log('Server escuchando en el puerto ', app.get('port'));
+  console.log('Servidor escuchando en el puerto', app.get('port'));
 });

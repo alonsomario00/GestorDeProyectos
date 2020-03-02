@@ -1,0 +1,91 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  {{#if user}}
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+      aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <div class="navbar-nav mr-auto">
+        <div class="btn-group" style="margin-left: 10px;">
+          <button type="button" class="btn btn-outline-info">
+            <a class="button btn-outline-info" href="/inicio">Inicio</a>
+          </button>
+        </div>
+        <div class="btn-group" style="margin-left:10px">
+          <button type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Proyectos
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/proyectos/addProyect">Alta de proyecto</a>
+            <a class="dropdown-item" href="/proyectos">Listado de proyecto</a>
+          </div>
+        </div>
+
+        <div class="btn-group" style="margin-left:10px">
+          <button type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Tareas
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/tareas/addWork">Alta de tarea</a>
+            <a class="dropdown-item" href="/tareas">Listado/modificacion de tareas</a>
+          </div>
+        </div>
+        {{!-- Dropdown --}}
+
+        <div class="btn-group" style="margin-left: 10px;">
+          <button type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Repositorio de archivos
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/repositorio/uploadFile">Subir archivo</a>
+            <a class="dropdown-item" href="/repositorio">Listado/modificación de archivos</a>
+          </div>
+        </div>
+        <div class="btn-group" style="margin-left: 10px;">
+          <button type="button" class="btn btn-outline-info">
+            <a class="button btn-outline-info" href="/fichado">Fichado</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-brand">
+      <div class="btn-group" style="margin-left: 10px;">
+        <button type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          JPM
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/perfil/updateProfile">Perfil</a>
+          <a class="dropdown-item" href="/salir">Salir</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{else}}
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="/static/img/logo.png" width="100px" height="50px"> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    </button>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="/login">
+            <button class="btn btn-outline-info">Iniciar sesión</button>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/registro">
+            <button class="btn btn-outline-info" style="margin-left: 10px;">Registro </button>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  {{/if}}
+</nav>

@@ -1,0 +1,1 @@
+SELECT U.nombreUsuario, U.idUsuario, M.puesto, M.idPuesto FROM jpm.usuarios U, jpm.puesto M WHERE U.idPuesto = 2 AND U.idPuesto = M.idPuesto OR U.idPuesto = 3 AND U.idPuesto = M.idPuesto OR U.idPuesto = 4 AND U.idPuesto = M.idPuesto

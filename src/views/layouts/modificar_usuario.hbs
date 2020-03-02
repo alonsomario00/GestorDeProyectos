@@ -1,0 +1,112 @@
+<div class="container p-4 borderweb">
+	<div class="row">
+		<div class="col mx-auto">
+			<div class="card text-center">
+				<div class="card-header bg-info font-weight-bold">
+					<h2>Modificar Usuario</h2>
+				</div>
+				<div class="form-group row" style="padding-top: 15px; text-align: center;">
+					<div class="col-6">
+						<label for="full_name_id" class="control-label">Nombre</label>
+						<input type="text" class="form-control text-center" id="full_name_id" name="name"
+							placeholder="Nombre">
+					</div>
+					<div class="col-3">
+						<label for="full_name_id" class="control-label">1º Apellido</label>
+						<input type="text" class="form-control text-center" id="full_name_id" name="name"
+							placeholder="Nombre">
+					</div>
+					<div class="col-3">
+						<label for="full_name_id" class="control-label">2º Apellido</label>
+						<input type="text" class="form-control text-center" id="full_name_id" name="name"
+							placeholder="Nombre">
+					</div>
+				</div>
+				<div class="form-group row" style="text-align: center;">
+					<div class="col">
+						<label for="full_name_id" class="control-label">Fecha Nacimiento</label>
+						<input type="date" class="form-control text-center" id="date1" name="date1"
+							placeholder="Fecha Nacimiento">
+					</div>
+					<div class="col">
+						<label for="full_name_id" class="control-label">Puesto</label>
+						<input type="text" class="form-control text-center" id="text" name="text" placeholder="Puesto">
+					</div>
+					<div class="col">
+						<label for="full_name_id" class="control-label">Telefono</label>
+						<input type="text" class="form-control text-center" id="text" name="text" placeholder="Puesto">
+					</div>
+				</div>
+				<div class="form-group row" style="text-align: center;">
+					<div class="col">
+						<label for="full_name_id" class="control-label">Direccion</label>
+						<input type="text" class="form-control text-center" id="date1" name="date1"
+							placeholder="Fecha Direccion">
+					</div>
+					<div class="col">
+						<label for="full_name_id" class="control-label">Ciudad</label>
+						<input type="text" class="form-control text-center" id="text" name="text" placeholder="Ciudad">
+					</div>
+					<div class="col">
+						<label for="full_name_id" class="control-label">Codigo Postal</label>
+						<input type="text" class="form-control text-center" id="text" name="text" placeholder="CP">
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-6 mx-auto text-center">
+						<label for="full_name_id" class="control-label">Correo Electronico</label>
+						<input type="text" class="form-control text-center" id="text" name="text"
+							placeholder="Correo Electronico">
+					</div>
+				</div>
+
+				<div class="form-group row" style="text-align: center">
+					<div class="col-12">
+						<label for="full_name_id" class="control-label">Descripción</label>
+						<textarea class="form-control text-center" id="full_name_id" name="descripcion"
+							placeholder="Descripción"></textarea>
+					</div>
+				</div>
+
+				{{!-- Botones --}}
+				<div class="text-right" style="padding-bottom: 20px; margin-top: 50px;">
+					<a href="" class="btn btn-primary">Aceptar</a>
+					<a href="/cancelar-crear-usuario" class="btn btn-danger">Cancelar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	/*funcion */
+	$("#customSwitch1").click(function () {
+		if ($("#customSwitch1").prop('checked')) {
+			$("#state_id1").prop('disabled', false);
+		} else {
+			$("#state_id1").prop('disabled', true);
+		}
+	})
+
+	$("#customSwitch2").click(function () {
+		if ($("#customSwitch2").prop('checked')) {
+			$("#state_id2").prop('disabled', false);
+		} else {
+			$("#state_id2").prop('disabled', true);
+		}
+	})
+
+	$("#customSwitch3").click(function () {
+		if ($("#customSwitch3").prop('checked')) {
+			$("#state_id3").prop('disabled', false);
+		} else {
+			$("#state_id3").prop('disabled', true);
+		}
+	})
+
+	/*funcion calendario*/
+	$("#date1").on("change", function () {
+		$("#date2").prop("min", $("#date1").val());
+		$("#date3").prop("min", $("#date1").val());
+	})
+</script>

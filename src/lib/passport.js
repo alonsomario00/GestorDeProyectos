@@ -1,72 +1,64 @@
-/*
-    El mód. passport permite fijar y configurar los métodos de autenticación.
-    Consultar http://www.passportjs.org/docs/ para más información
- */
 const passport = require('passport');
-//  Vamos autenticar con nuestra propia base de datos (local)
 const LocalStrategy = require('passport-local').Strategy;
-//  Como vamos a guardar los datos en la BD, necesitamosla conexión a la misma
-const dbconn = require('../database');
-const helpers = require('./helpers');  //cifrado /descrifrado de contraseña
 
-//  Definimos una forma de autenticación que llamamos 'local.registro'
-//  para tratar el registro de un nuevo usuario.
-//  Aquí recibiremos los campos a comprobar 
-passport.use('local.registro', new LocalStrategy({
-  usernameField: 'username',  //  recibimos el campo 'username' desde el formulario
-  passwordField: 'password',  //  recibimos el campo 'password' desde el formulario
-  passReqToCallback: true     //  Como hay más datos, se añade esta opción que recibe req.body
-}, async (req, username, password, done) => { 
-  // el param. 'done' se utiliza para que continue después de hacer la autenticación.
-  // Asignamos el resto de datos que llegaron en el req.body  
-  const { fullname } = req.body;
-  let newUser = {
-    fullname,
-    username,
-    password
-  };
-  //  Ciframos la contraseña
-  newUser.password = await helpers.encryptPassword(password);
-  // Grabamos en la BD
-  const result = await dbconn.query('INSERT INTO users SET ? ', newUser);
-  newUser.id = result.insertId; // añadimos el id al usuario nuevo
-  return done(null, newUser);  // se pasa el usuario al serializeUser para la session
-}));
+const dbConn = require('../database');
+const helpers = require('./helpers');
 
-//  Definimos otra forma de autenticación que llamamos 'local.login'
-//  para tratar el registro de un nuevo usuario.
-//  Aquí recibiremos los campos a comprobar 
 passport.use('local.login', new LocalStrategy({
   usernameField: 'username',
   passwordField: 'password',
   passReqToCallback: true
 }, async (req, username, password, done) => {
-  console.log(req.body);
-  //console.log(username);
-  //console.log(password);
-  const rows = await dbconn.query('SELECT * FROM users WHERE username = ?', [username]);
+  const rows = await dbConn.query('SELECT * FROM usuarios WHERE correo = ?', [username]);
   if (rows.length > 0) {
     const user = rows[0];
-    const validPassword = await helpers.matchPassword(password, user.password)
+    const validPassword = await helpers.matchPassword(password, user.clave)
     if (validPassword) {
-      done(null, user, req.flash('success', 'Welcome ' + user.username +'.')); // el 1er param. indica que na ha habido error
+      done(null, user, req.flash('success', 'Bienvenido ' + user.nombreUsuario + ' ' + user.apellido1 + ' ' + user.apellido2));
     } else {
-      done(null, false, req.flash('message', 'Clave erronea.'));
+      done(null, false, req.flash('message', 'Contraseña incorrecta'));
     }
   } else {
-    return done(null, false, req.flash('message', 'El usuario no existe.'));
+    return done(null, false, req.flash('message', 'El correo electrónico no existe'));
   }
 }));
 
-//  Según la docum. en http://www.passportjs.org/docs/configure/
-//  Es necesario utilizar 'serializeUser' y 'deserializeUser' si se utilizan sesiones
+//Registro
+passport.use('local.registro', new LocalStrategy({
+  usernameField: 'username',
+  passwordField: 'password',
+  passReqToCallback: true
+}, async (req, username, password, done) => {
+
+  const { firstname, lastname, surname, postcode, born, job, phone, adress, city, province, description } = req.body;
+  let newUser = {
+    nombreUsuario: firstname,
+    apellido1: lastname,
+    apellido2: surname,
+    clave: password,
+    correo: username,
+    cp: postcode,
+    nacimiento: born,
+    idPuesto: job,
+    telefono: phone,
+    direccion: adress,
+    ciudad: city,
+    provincia: province,
+    descripcion: description
+  };
+  newUser.clave = await helpers.encryptPassword(password);
+  // Saving in the Database
+  const result = await dbConn.query('INSERT INTO usuarios SET ? ', newUser);
+    newUser.idUsuario = result.insertId;
+    return done(null, newUser);
+  }));
+
 passport.serializeUser((user, done) => {
-  console.log(user);
-  done(null, user.id);  // el param. 1 indica si hay error
+  done(null, user.correo);
 });
 
-passport.deserializeUser(async (id, done) => {
-  const rows = await dbconn.query('SELECT * FROM users WHERE id = ?', [id]);
+passport.deserializeUser(async (correo, done) => {
+  const rows = await dbConn.query('SELECT * FROM usuarios WHERE correo = ?', [correo]);
   done(null, rows[0]);
 });
 

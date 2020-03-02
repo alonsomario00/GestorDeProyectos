@@ -1,0 +1,108 @@
+<div class="container p-4 borderweb">
+	<div class="row">
+		<div class="col mx-auto">
+			<div class="card text-center">
+				<div class="card-header bg-info font-weight-bold">
+					<h2>Modificar Proyecto</h2>
+				</div>
+				<div class="card-body">
+					<form action="/proyectos/editProyect/{{proyectos.idProyecto}}" method="POST">
+						<div class="row">
+							<div class="col-8">
+								<div class="form-group">
+									<h6>Nombre</h6>
+									<input type="text" value="{{proyectos.nombreProyecto}}"
+										class="form-control text-center" name="name" placeholder="Nombre">
+								</div>
+							</div>
+							<div class="col-4">
+								<div class="form-group">
+									<h6>Jefe de Proyecto</h6>
+									<select class="form-control text-center" name="boss">
+										<option value="0">---</option>
+										{{#each usuarios}}
+										{{#if selected}}
+										<option selected value="{{idUsuario}}">{{nombreUsuario}}</option>
+										{{else}}
+										<option value="{{idUsuario}}">{{nombreUsuario}}</option>
+										{{/if}}
+										{{/each}}
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-4 offset-md-2">
+								<div class="form-group">
+									<h6>Fecha Inicio</h6>
+									<input type="date" value="{{proyectos.fechaInicioProyecto}}" class="form-control"
+										name="date1" placeholder="">
+								</div>
+							</div>
+							<div class="col-4">
+								<div class="form-group">
+									<h6>Fecha Fin</h6>
+									<input type="date" value="{{proyectos.fechaFinProyecto}}" class="form-control"
+										name="date2" placeholder="">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-8 offset-md-2">
+								<div class="form-group">
+									<h6>Descripción</h6>
+									<input type="text" value="{{proyectos.descripcionProyecto}}"
+										class="form-control text-center" name="description"
+										placeholder="Descripción"></input>
+								</div>
+							</div>
+						</div>
+						<div class="row mt-4 mb-4">
+							<div class="col-10 offset-md-1">
+								<h6>Tareas Asociadas</h6>
+								<table class="table table-striped table-bordered table-hover">
+									<thead class="text-center">
+										<tr>
+											<th class="align-middle">Tarea</th>
+											<th class="align-middle">Fecha Inicio</th>
+											<th class="align-middle">Fecha Final</th>
+											<th class="align-middle">Programador Senior</th>
+											<th class="align-middle">Programador Junior</th>
+											<th class="align-middle">Editar</th>
+										</tr>
+									</thead>
+									<tbody>
+										{{#each tareas}}
+										<tr>
+											<td class="align-middle">{{nombreTarea}} </td>
+											<td class="align-middle">{{fechaInicioTarea}}</td>
+											<td class="align-middle">{{fechaFinTarea}}</td>
+											<td class="align-middle">{{nombreSenior}}</td>
+											<td class="align-middle">{{nombreJunior}}</td>
+											<td class="align-middle">
+												<a class="btn btn-info" href="/tareas/editWork/{{idTarea}}">
+													<i class="far fa-eye"></i>
+												</a>
+											</td>
+										</tr>
+										{{/each}}
+									</tbody>
+								</table>
+							</div>
+						</div>
+						{{!-- Botones --}}
+						<div class="row m-2" style="text-align:right;">
+							<div class="col-12">
+								<div class="btn-group">
+									<button class="btn btn-primary">Aceptar</button>
+								</div>
+								<button type="button" class="btn btn-danger"
+									onclick="window.location.href='/proyectos'">Cancelar</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

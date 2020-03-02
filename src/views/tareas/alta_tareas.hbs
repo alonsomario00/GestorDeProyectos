@@ -1,0 +1,103 @@
+<div class="container p-4 borderweb">
+	<div class="row">
+		<div class="col mx-auto">
+			<div class="card text-center">
+				<div class="card-header bg-info font-weight-bold">
+					<h2>Alta de Tarea</h2>
+				</div>
+				<div class="card-body">
+					<form action="/tareas/addWork" method="POST">
+						<div class="row">
+							<div class="col-6 mx-auto">
+								<div class="form-group">
+									<h6>Nombre</h6>
+									<input type="text" class="form-control" name="name" placeholder="Nombre">
+								</div>
+							</div>
+						</div>
+						<div class="row text">
+							<div class="col-4 offset-md-2">
+								<div class="form-group">
+									<h6>Fecha Inicio</h6>
+									<input type="date" class="form-control" name="date1" placeholder="">
+								</div>
+							</div>
+							<div class="col-4">
+								<div class="form-group">
+									<h6>Fecha Fin</h6>
+									<input type="date" class="form-control" name="date2" placeholder="">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-4">
+								<div class="form-group">
+									<h6>Proyecto Asociado</h6>
+									<select class="form-control" name="proyect">
+										<option value="0">---</option>
+										{{#each proyecto}}
+										<option value="{{idProyecto}}">{{nombreProyecto}}</option>
+										{{/each}}
+									</select>
+								</div>
+							</div>
+							<div class="col-4">
+								<div class="form-group">
+									<h6>Programador Senior</h6>
+									<select class="form-control" name="senior">
+										<option value="0">---</option>
+										{{!-- {{#each senior}}
+										<option value="{{idUsuario}}">{{nombreUsuario}}</option>
+										{{/each}} --}}
+
+										{{#each senior}}
+										{{#if selected}}
+										<option selected value="{{idUsuario}}">{{nombreUsuario}}</option>
+										{{else}}
+										<option value="{{idUsuario}}">{{nombreUsuario}}</option>
+										{{/if}}
+										{{/each}}
+
+									</select>
+								</div>
+							</div>
+							<div class="col-4">
+								<div class="form-group">
+									<h6>Programador Junior</h6>
+									<select class="form-control" name="junior">
+										<option value="0">---</option>
+										{{#each junior}}
+										{{#if selected}}
+										<option selected value="{{idUsuario}}">{{nombreUsuario}}</option>
+										{{else}}
+										<option value="{{idUsuario}}">{{nombreUsuario}}</option>
+										{{/if}}
+										{{/each}}
+
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-8 mx-auto">
+								<div class="form-group">
+									<h6>Descripción</h6>
+									<textarea class="form-control" name="description"
+										placeholder="Descripción"></textarea>
+								</div>
+							</div>
+						</div>
+						{{!-- Botones --}}
+						<div class="row m-2" style="text-align:right;">
+							<div class="col-12">
+								<button class="btn btn-primary">Crear</button>
+								<button type="button" class="btn btn-danger"
+									onclick="window.location.href='/tareas'">Cancelar</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
